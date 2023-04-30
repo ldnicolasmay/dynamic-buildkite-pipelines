@@ -1,0 +1,9 @@
+steps:
+  - label: ":pipeline: Load project Pipeline"
+    key: "load_project_pipeline"
+    if: |
+      build.env("DYN_ENABLED") == "TRUE" || 
+      build.env("DYN_ENABLED") == "True" ||
+      build.env("DYN_ENABLED") == "true"
+    commands:
+      - "buildkite-agent pipeline upload .buildkite/pipeline.project.yml"
