@@ -1,6 +1,6 @@
 import yaml
 
-from ...utils.utils import format_dict_strs
+from ..utils.utils import format_dict_strs
 
 
 plugins_dict = {
