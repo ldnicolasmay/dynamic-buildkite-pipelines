@@ -29,8 +29,8 @@ def format_dict_strs(thing: Any, **kwargs) -> Any:
 #}
 
 step_template = {
-    "label": ":python: foo",
-    "key": "foo",
+    "label": ":python: foo {_NUM_}",
+    "key": "foo_{_NUM_}",
     #"plugins": plugins_dict,
     "commands": [
         "python 3 -m venv .venv",
