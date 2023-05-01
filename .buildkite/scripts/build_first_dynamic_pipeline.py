@@ -33,10 +33,10 @@ step_template = {
     "key": "foo_{_NUM_}",
     #"plugins": plugins_dict,
     "commands": [
-        "python 3 -m venv .venv",
-        "source .venv/bin/activate",
-        "python3 -m pip install --upgrade pip",
-        "python3 -m pip install -r requirements.txt",
+        # "python3 -m venv .venv",
+        # "source .venv/bin/activate",
+        # "python3 -m pip install --upgrade pip",
+        # "python3 -m pip install -r requirements.txt",
         "echo {_NUM_}",
     ]
 }
