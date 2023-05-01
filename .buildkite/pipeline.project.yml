@@ -1,7 +1,8 @@
 plugins: &plugins
   - docker#v5.6.0:
       image: python:3.10.11-slim-bullseye
-      #shell: ["/bin/bash", "-c"]
+      shell: ["/bin/bash", "-c"]
+      user: buildkite-agent
 
 steps:
   - label: ":python: Build first dynamic pipeline"
