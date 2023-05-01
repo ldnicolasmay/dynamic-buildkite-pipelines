@@ -13,3 +13,4 @@ steps:
       - python3 -m pip install --upgrade pip
       - python3 -m pip install -r requirements.txt
       - python3 .buildkite/scripts/build_first_dynamic_pipeline.py
+      - buildkite-agent pipeline upload .buildkite/pipeline.first_dynamic_pipeline.yml
