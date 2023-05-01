@@ -17,21 +17,21 @@ def format_dict_strs(thing: Any, **kwargs) -> Any:
             return thing
 
 
-plugins_dict = {
-    "plugins": [
-        {
-            "docker#v5.6.0": {
-                "image": "python:3.10.11-slim-bullseye",
-                "shell": ["/bin/bash", "-c"]
-            }
-        }
-    ]
-}
+#plugins_dict = {
+#    "plugins": [
+#        {
+#            "docker#v5.6.0": {
+#                "image": "python:3.10.11-slim-bullseye",
+#                "shell": ["/bin/bash", "-c"]
+#            }
+#        }
+#    ]
+#}
 
 step_template = {
     "label": ":python: foo",
     "key": "foo",
-    "plugins": plugins_dict,
+    #"plugins": plugins_dict,
     "commands": [
         "python 3 -m venv .venv",
         "source .venv/bin/activate",
