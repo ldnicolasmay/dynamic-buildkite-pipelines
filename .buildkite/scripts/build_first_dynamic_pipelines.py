@@ -2,6 +2,7 @@ from typing import Any
 
 import yaml
 
+
 # from utils.utils import format_dict_strs
 
 
@@ -12,12 +13,15 @@ def format_dict_strs(thing: Any, **kwargs) -> Any:
         case list():
             return [format_dict_strs(t, **kwargs) for t in thing]
         case dict():
-            return {k.format(**kwargs) if isinstance(k, str) else k: format_dict_strs(v, **kwargs) for k, v in thing.items()}
+            return {
+                k.format(**kwargs)
+                if isinstance(k, str) else k: format_dict_strs(v, **kwargs)
+                for k, v in thing.items()}
         case _:
             return thing
 
 
-#plugins_dict = {
+# plugins_dict = {
 #    "plugins": [
 #        {
 #            "docker#v5.6.0": {
@@ -26,22 +30,24 @@ def format_dict_strs(thing: Any, **kwargs) -> Any:
 #            }
 #        }
 #    ]
-#}
+# }
 
 step_template = {
-    "label": ":python: foo {_NUM_}",
+    "label": ":python: foo {_FOO_NUM_}",
     "key": "foo_{_NUM_}",
-    #"plugins": plugins_dict,
+    # "plugins": plugins_dict,
     "commands": [
         # "python3 -m venv .venv",
         # "source .venv/bin/activate",
         # "python3 -m pip install --upgrade pip",
         # "python3 -m pip install -r requirements.txt",
-        "echo {_NUM_}",
+        "echo {_FOO_NUM_}",
         "python3 -m venv .venv",
         "source .venv/bin/activate",
         "python3 -m pip install --upgrade pip",
         "python3 -m pip install -r requirements.txt",
+        "python3 .buildkite/scripts/build_second_dynamic_pipelines.py {_FOO_NUM_}",
+        "buildkite-agent pipeline upload .buildkite/pipeline.second_dynamic_pipelines.yml",
     ]
 }
 
@@ -52,12 +58,12 @@ def main() -> None:
     num_pipelines = 3
     pipeline_dict = {"steps": []}
     for i in range(num_pipelines):
-        step_i = format_dict_strs(step_template, _NUM_=i)
+        step_i = format_dict_strs(step_template, _FOO_NUM_=i)
         pipeline_dict["steps"].append(step_i)
         if i < num_pipelines - 1:
             pipeline_dict["steps"].append("wait")
 
-    with open(f".buildkite/pipeline.first_dynamic_pipeline.yml", "w+") as pipeline_file:
+    with open(".buildkite/pipeline.first_dynamic_pipelines.yml", "w+") as pipeline_file:
         yaml.safe_dump(pipeline_dict, pipeline_file)
 
     print("===== build_first_dynamic_pipelines.py =====")
