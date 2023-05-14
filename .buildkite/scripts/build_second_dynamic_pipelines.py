@@ -43,6 +43,7 @@ def main(i: int) -> None:
         pipeline_dict["steps"].append(step_j)
         # if j < num_pipelines - 1:
         #     pipeline_dict["steps"].append("wait")
+        pipeline_dict["steps"].append("wait")
 
     with open(f".buildkite/pipeline.second_dynamic_pipelines.yml", "w+") as pipeline_file:
         yaml.safe_dump(pipeline_dict, pipeline_file)
