@@ -43,17 +43,20 @@ step_template = {
 
 
 def main() -> None:
-    print("===== build_first_dynamic_pipeline.py =====")
+    print("===== build_first_dynamic_pipelines.py =====")
 
+    num_pipelines = 3
     pipeline_dict = {"steps": []}
-    for i in range(3):
+    for i in range(num_pipelines):
         step_i = format_dict_strs(step_template, _NUM_=i)
         pipeline_dict["steps"].append(step_i)
+        if i < num_pipelines - 1:
+            pipeline_dict["steps"].append("wait")
 
     with open(f".buildkite/pipeline.first_dynamic_pipeline.yml", "w+") as pipeline_file:
         yaml.safe_dump(pipeline_dict, pipeline_file)
 
-    print("===== build_first_dynamic_pipeline.py =====")
+    print("===== build_first_dynamic_pipelines.py =====")
 
 
 if __name__ == "__main__":
