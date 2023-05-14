@@ -5,7 +5,7 @@ plugins: &plugins
   #    user: hynso
 
 steps:
-  - label: ":python: Build first dynamic pipeline"
+  - label: ":python: Build first dynamic pipelines"
     key: build_first_dynamic_pipeline
     #plugins: *plugins
     commands:
