@@ -60,8 +60,9 @@ def main() -> None:
     for i in range(num_pipelines):
         step_i = format_dict_strs(step_template, _I_NUM_=i)
         pipeline_dict["steps"].append(step_i)
-        if i < num_pipelines - 1:
-            pipeline_dict["steps"].append("wait")
+        # if i < num_pipelines - 1:
+        #     pipeline_dict["steps"].append("wait")
+        pipeline_dict["steps"].append("wait")
 
     with open(".buildkite/pipeline.first_dynamic_pipelines.yml", "w+") as pipeline_file:
         yaml.safe_dump(pipeline_dict, pipeline_file)
