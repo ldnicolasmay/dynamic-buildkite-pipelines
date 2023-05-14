@@ -15,5 +15,3 @@ steps:
       - python3 -m pip install -r requirements_1.txt
       - python3 .buildkite/scripts/build_first_dynamic_pipelines.py
       - buildkite-agent pipeline upload .buildkite/pipeline.first_dynamic_pipelines.yml
-
-  - wait

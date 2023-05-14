@@ -8,7 +8,7 @@ def main(i: int, j: int) -> None:
     i={i}
     j={j}
     """
-    print(text2art(text, font="alpha"))
+    print(text2art(text, font="doh"))
 
 
 if __name__ == "__main__":
