@@ -33,20 +33,20 @@ def format_dict_strs(thing: Any, **kwargs) -> Any:
 # }
 
 step_template = {
-    "label": ":python: foo {_FOO_NUM_}",
-    "key": "foo_{_FOO_NUM_}",
+    "label": ":python: i={_I_NUM_}",
+    "key": "i_{_I_NUM_}",
     # "plugins": plugins_dict,
     "commands": [
         # "python3 -m venv .venv",
         # "source .venv/bin/activate",
         # "python3 -m pip install --upgrade pip",
-        # "python3 -m pip install -r requirements.txt",
-        "echo {_FOO_NUM_}",
+        # "python3 -m pip install -r requirements_1.txt",
+        "echo {_I_NUM_}",
         "python3 -m venv .venv",
         "source .venv/bin/activate",
         "python3 -m pip install --upgrade pip",
-        "python3 -m pip install -r requirements.txt",
-        "python3 .buildkite/scripts/build_second_dynamic_pipelines.py {_FOO_NUM_}",
+        "python3 -m pip install -r requirements_1.txt",
+        "python3 .buildkite/scripts/build_second_dynamic_pipelines.py {_I_NUM_}",
         "buildkite-agent pipeline upload .buildkite/pipeline.second_dynamic_pipelines.yml",
     ]
 }
@@ -58,7 +58,7 @@ def main() -> None:
     num_pipelines = 3
     pipeline_dict = {"steps": []}
     for i in range(num_pipelines):
-        step_i = format_dict_strs(step_template, _FOO_NUM_=i)
+        step_i = format_dict_strs(step_template, _I_NUM_=i)
         pipeline_dict["steps"].append(step_i)
         if i < num_pipelines - 1:
             pipeline_dict["steps"].append("wait")
