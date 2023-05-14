@@ -37,10 +37,6 @@ step_template = {
     "key": "i_{_I_NUM_}",
     # "plugins": plugins_dict,
     "commands": [
-        # "python3 -m venv .venv",
-        # "source .venv/bin/activate",
-        # "python3 -m pip install --upgrade pip",
-        # "python3 -m pip install -r requirements_1.txt",
         "echo {_I_NUM_}",
         "python3 -m venv .venv",
         "source .venv/bin/activate",
@@ -53,8 +49,6 @@ step_template = {
 
 
 def main() -> None:
-    print("===== build_first_dynamic_pipelines.py =====")
-
     num_pipelines = 3
     pipeline_dict = {"steps": []}
     for i in range(num_pipelines):
@@ -66,8 +60,6 @@ def main() -> None:
 
     with open(".buildkite/pipeline.first_dynamic_pipelines.yml", "w+") as pipeline_file:
         yaml.safe_dump(pipeline_dict, pipeline_file)
-
-    print("===== build_first_dynamic_pipelines.py =====")
 
 
 if __name__ == "__main__":

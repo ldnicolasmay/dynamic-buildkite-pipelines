@@ -19,6 +19,7 @@ def format_dict_strs(thing: Any, **kwargs) -> Any:
         case _:
             return thing
 
+
 step_template = {
     "label": ":python: i={_I_NUM_} j={_J_NUM_}",
     "key": "i_{_I_NUM_}_j_{_J_NUM_}",
@@ -34,8 +35,6 @@ step_template = {
 
 
 def main(i: int) -> None:
-    print("===== build_second_dynamic_pipelines.py =====")
-
     num_pipelines = 3
     pipeline_dict = {"steps": []}
     for j in range(num_pipelines):
@@ -47,8 +46,6 @@ def main(i: int) -> None:
 
     with open(f".buildkite/pipeline.second_dynamic_pipelines.yml", "w+") as pipeline_file:
         yaml.safe_dump(pipeline_dict, pipeline_file)
-
-    print("===== build_second_dynamic_pipelines.py =====")
 
 
 if __name__ == "__main__":
