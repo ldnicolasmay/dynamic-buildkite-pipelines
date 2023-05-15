@@ -4,11 +4,8 @@ from art import *
 
 
 def main(i: int, j: int) -> None:
-    text = f"""
-    i={i}
-    j={j}
-    """
-    print(text2art(text, font="doh"))
+    text = "i={i}\nj={j}"
+    print(text2art(text, font="block"))
 
 
 if __name__ == "__main__":

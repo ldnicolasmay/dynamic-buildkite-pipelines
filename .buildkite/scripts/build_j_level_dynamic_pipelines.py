@@ -1,24 +1,7 @@
 import argparse
 import yaml
-# from typing import Any
 
 from utils.utils import format_dict_strs
-
-
-# def format_dict_strs(thing: Any, **kwargs) -> Any:
-#     match thing:
-#         case str():
-#             return thing.format(**kwargs)
-#         case list():
-#             return [format_dict_strs(t, **kwargs) for t in thing]
-#         case dict():
-#             return {
-#                 k.format(**kwargs)
-#                 if isinstance(k, str) else k: format_dict_strs(v, **kwargs)
-#                 for k, v in thing.items()
-#             }
-#         case _:
-#             return thing
 
 
 step_template = {
@@ -41,11 +24,9 @@ def main(i: int) -> None:
     for j in range(num_pipelines):
         step_j = format_dict_strs(step_template, _I_NUM_=i, _J_NUM_=j)
         pipeline_dict["steps"].append(step_j)
-        # if j < num_pipelines - 1:
-        #     pipeline_dict["steps"].append("wait")
         pipeline_dict["steps"].append("wait")
 
-    with open(f".buildkite/pipeline.second_dynamic_pipelines.yml", "w+") as pipeline_file:
+    with open(f".buildkite/pipeline.level_j_dynamic_pipelines.yml", "w+") as pipeline_file:
         yaml.safe_dump(pipeline_dict, pipeline_file)
 
 
