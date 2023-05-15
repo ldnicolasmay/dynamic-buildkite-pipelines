@@ -1,6 +1,6 @@
 import argparse
 
-from art import *
+from art import text2art
 
 
 def main(i: int, j: int) -> None:

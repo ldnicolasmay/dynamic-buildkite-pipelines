@@ -21,12 +21,13 @@ step_template = {
 def main(i: int) -> None:
     num_pipelines = 3
     pipeline_dict = {"steps": []}
+
     for j in range(num_pipelines):
         step_j = format_dict_strs(step_template, _I_NUM_=i, _J_NUM_=j)
-        # pipeline_dict["steps"].append("wait")
+        pipeline_dict["steps"].append("wait")
         pipeline_dict["steps"].append(step_j)
 
-        with open(f".buildkite/pipeline.i_level_{i}_j_level.yml", "w+") as pipeline_file:
+        with open(f".buildkite/pipeline.i_{i}_j_level.yml", "w") as pipeline_file:
             yaml.safe_dump(pipeline_dict, pipeline_file)
 
 
