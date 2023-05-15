@@ -13,7 +13,7 @@ step_template = {
         "python3 -m pip install --upgrade pip",
         "python3 -m pip install -r requirements_1.txt",
         "python3 .buildkite/scripts/j_level_steps.py {_I_NUM_}",
-        "buildkite-agent pipeline upload .buildkite/pipeline.j_level.yml",
+        "buildkite-agent pipeline upload .buildkite/pipeline.i_level_{_I_NUM_}_j_level.yml",
     ]
 }
 
@@ -27,11 +27,11 @@ def main() -> None:
         pipeline_dict["steps"].append(step_i)
         pipeline_dict["steps"].append("wait")
 
-        with open(f".buildkite/pipeline.i_level_{i}.yml", "w+") as pipeline_file:
-            yaml.safe_dump(pipeline_dict, pipeline_file)
+        # with open(f".buildkite/pipeline.i_level.yml", "w+") as pipeline_file:
+        #     yaml.safe_dump(pipeline_dict, pipeline_file)
 
-    # with open(".buildkite/pipeline.i_level.yml", "w+") as pipeline_file:
-    #     yaml.safe_dump(pipeline_dict, pipeline_file)
+    with open(".buildkite/pipeline.i_level.yml", "w+") as pipeline_file:
+        yaml.safe_dump(pipeline_dict, pipeline_file)
 
 
 if __name__ == "__main__":
