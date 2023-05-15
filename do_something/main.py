@@ -4,7 +4,7 @@ from art import *
 
 
 def main(i: int, j: int) -> None:
-    text = "i={i}\nj={j}"
+    text = f"i={i}\nj={j}"
     print(text2art(text, font="block"))
 
 

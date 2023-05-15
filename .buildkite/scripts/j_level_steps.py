@@ -26,8 +26,11 @@ def main(i: int) -> None:
         pipeline_dict["steps"].append(step_j)
         pipeline_dict["steps"].append("wait")
 
-    with open(f".buildkite/pipeline.level_j_dynamic_pipelines.yml", "w+") as pipeline_file:
-        yaml.safe_dump(pipeline_dict, pipeline_file)
+        with open(f".buildkite/pipeline.i_level_{i}_j_level_{j}.yml", "w+") as pipeline_file:
+            yaml.safe_dump(pipeline_dict, pipeline_file)
+
+    # with open(f".buildkite/pipeline.j_level.yml", "w+") as pipeline_file:
+    #     yaml.safe_dump(pipeline_dict, pipeline_file)
 
 
 if __name__ == "__main__":
