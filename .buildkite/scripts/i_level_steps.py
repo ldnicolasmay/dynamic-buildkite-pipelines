@@ -24,7 +24,7 @@ def main() -> None:
 
     for i in range(num_pipelines):
         step_i = format_dict_strs(step_template, _I_NUM_=i)
-        pipeline_dict["steps"].append("wait")
+        # pipeline_dict["steps"].append("wait")
         pipeline_dict["steps"].append(step_i)
 
     with open(".buildkite/pipeline.i_level.yml", "w") as pipeline_file:
